@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 
 print(tf.__version__)
-print(sys.version)
+
 
 # Load the saved model
 loaded_model = tf.keras.models.load_model("mo.tf")

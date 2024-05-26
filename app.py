@@ -4,13 +4,13 @@ import pandas as pd
 import pickle
 import numpy as np
 import tensorflow as tf
-
+import sys
 print(tf.__version__)
-
+import os
 
 # Load the saved model
 loaded_model = tf.keras.models.load_model("mo.tf")
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 loaded_model.summary()
 sample_text = (
     '''The movie by ENSA berrechid was so good and the animation are so dope.
@@ -47,4 +47,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=1000,debug=True)
+    port = int(os.environ.get('PORT', 10000)) 
+    app.run(host='0.0.0.0', port=port,debug=True)

@@ -1,11 +1,12 @@
 from flask import Flask,request, url_for, redirect, render_template, jsonify
-
+import sys
 import pandas as pd
 import pickle
 import numpy as np
 import tensorflow as tf
 
 print(tf.__version__)
+print(sys.version)
 
 # Load the saved model
 loaded_model = tf.keras.models.load_model("mo.tf")

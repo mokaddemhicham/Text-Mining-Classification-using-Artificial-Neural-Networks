@@ -81,11 +81,11 @@
             .then(data => {
                 var predictionResult = parseFloat(data.prediction);
 
-                var alertClass = predictionResult > 0 ? 'badge-success' : 'badge-danger';
+                var alertClass = predictionResult > 0 ? 'bg-success' : 'bg-danger';
                 var predictionText = predictionResult > 0 ? 'Positive' : 'Negative';
                 document.getElementById("predictionResult").innerText = predictionText;
 
-                document.getElementById("predictionResult").classList.remove('badge-success', 'badge-danger');
+                document.getElementById("predictionResult").classList.remove('bg-success', 'bg-danger');
                 document.getElementById("predictionResult").classList.add(alertClass);
             })
             .catch(error => {

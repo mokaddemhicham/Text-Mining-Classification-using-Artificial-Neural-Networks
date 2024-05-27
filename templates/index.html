@@ -25,8 +25,8 @@
                     </p>
                     <form action="" class="form">
                         <div class="form-floating">
-                            <textarea class="form-control mb-4" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                            <label for="floatingTextarea2">Review</label>
+                            <textarea class="form-control mb-4" placeholder="Leave a comment here" id="review" style="height: 100px"></textarea>
+                            <label for="review">Review</label>
                         </div>
                         <button type="button" class="btn btn-primary w-100" onclick="predict()">Predict</button>
                     </form>
@@ -67,8 +67,7 @@
     });
 
     function predict() {
-        var textInput = document.getElementById("textInput").value;
-        console.log(textInput);
+        var textInput = document.getElementById("review").value;
         var data = { "text": textInput };
 
         fetch('/predict', {

@@ -1,29 +1,12 @@
-from flask import Flask,request, url_for, redirect, render_template, jsonify
+from flask import Flask, request, render_template, jsonify
 
-import pandas as pd
-import pickle
 import numpy as np
 import tensorflow as tf
-import sys
-print(tf.__version__)
 import os
 
 # Load the saved model
 loaded_model = tf.keras.models.load_model("mo.tf")
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 loaded_model.summary()
-sample_text = (
-    '''The movie by ENSA berrechid was so good and the animation are so dope.
-	I would recommend my friends to watch it.'''
-)
-predictions = loaded_model.predict(np.array([sample_text]))
-print(type(predictions))
-print(*predictions[0])
-
-if predictions[0] > 0:
-    print('The review is positive')
-else:
-    print('The review is negative')
 
 # Initalize the Flask app
 app = Flask(__name__)
@@ -48,5 +31,6 @@ def predict():
 
 if __name__ == "__main__":
     from waitress import serve
-    port = int(os.environ.get('PORT', 1000)) 
-    serve(app,host='0.0.0.0', port=port)
+
+    port = int(os.environ.get('PORT', 1000))
+    serve(app, host='0.0.0.0', port=port)
